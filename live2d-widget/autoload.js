@@ -37,7 +37,8 @@ if (screen.width >= 768) {
 			//apiPath: "https://live2d.fghrsh.net/api/",
 			//cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/",
 			cdnPath: "https://npm.elemecdn.com/akilar-live2dapi@latest/",
-			tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
+			tools: ["asteroids", "switch-model", "switch-texture", "info", "quit"],
+			drag: True
 		});
 	});
 }
