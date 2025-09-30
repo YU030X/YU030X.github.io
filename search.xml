@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>基础任务</title>
-    <url>/2025/09/29/%E5%9F%BA%E7%A1%80%E4%BB%BB%E5%8A%A1/</url>
-    <content><![CDATA[<h2 id="计算机教育中缺失的学期"><a href="#计算机教育中缺失的学期" class="headerlink" title="计算机教育中缺失的学期"></a><strong>计算机教育中缺失的学期</strong></h2><p><img src="/./../images/PixPin_2025-09-29_23-43-13.png" alt="PixPin_2025-09-29_23-43-13"></p>
-<h2 id="访问chatGPT"><a href="#访问chatGPT" class="headerlink" title="访问chatGPT"></a>访问chatGPT</h2><p><img src="/./../images/PixPin_2025-09-29_23-06-34.png" alt="PixPin_2025-09-29_23-06-34"></p>
-<h2 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h2><p>搭建基于 github+hexo 的个人博客，在部署到github时，因网络而失败，后面通过切换代理解决。</p>
-<h2 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h2><h4 id="ubuntu22-04"><a href="#ubuntu22-04" class="headerlink" title="ubuntu22.04"></a>ubuntu22.04</h4><p><img src="/./../images/PixPin_2025-09-29_23-20-21.png" alt="PixPin_2025-09-29_23-20-21"></p>
-<h4 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h4><p><img src="/./../images/PixPin_2025-09-29_23-19-26.png" alt="PixPin_2025-09-29_23-19-26"></p>
-<h2 id="使用VScode"><a href="#使用VScode" class="headerlink" title="使用VScode"></a>使用VScode</h2><h4 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h4><p><img src="/./../images/PixPin_2025-09-29_23-29-55.png" alt="PixPin_2025-09-29_23-29-55"></p>
-<h4 id="SSH连接虚拟机"><a href="#SSH连接虚拟机" class="headerlink" title="SSH连接虚拟机"></a>SSH连接虚拟机</h4><p><img src="/./../images/PixPin_2025-09-29_23-32-11.png" alt="PixPin_2025-09-29_23-32-11"></p>
-<h4 id="主题插件"><a href="#主题插件" class="headerlink" title="主题插件"></a>主题插件<img src="/./../images/PixPin_2025-09-29_23-33-16.png" alt="PixPin_2025-09-29_23-33-16"></h4><h4 id="安装-libnum库-并运行代码"><a href="#安装-libnum库-并运行代码" class="headerlink" title="安装 libnum库,并运行代码"></a>安装 libnum库,并运行代码</h4><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p><img src="/./../images/PixPin_2025-09-29_23-39-27.png" alt="PixPin_2025-09-29_23-39-27"></p>
-<h5 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line">my_str = <span class="number">10400874617859432610723437735825230748786977</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(my_str))</span><br></pre></td></tr></table></figure>
-
-<p><img src="/./../images/PixPin_2025-09-29_23-39-44.png" alt="PixPin_2025-09-29_23-39-44"></p>
-]]></content>
-      <categories>
-        <category>埋头苦干</category>
-      </categories>
-      <tags>
-        <tag>杂</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>web任务</title>
     <url>/2025/09/29/web%E4%BB%BB%E5%8A%A1/</url>
     <content><![CDATA[<h2 id="任务一"><a href="#任务一" class="headerlink" title="任务一"></a>任务一</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /api/graphs/fulltext-search?haha=123 HTTP/1.1</span><br><span class="line">Host: localhost</span><br><span class="line">Cookie: xxx=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,</span><br><span class="line">like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0</span><br><span class="line">Sec-Ch-Ua: &quot;Chromium&quot;;v=&quot;140&quot;, &quot;Not=A?Brand&quot;;v=&quot;24&quot;, &quot;Microsoft Edge&quot;;v=&quot;140&quot;</span><br><span class="line">Sec-Ch-Ua-Mobile: ?0</span><br><span class="line">Accept: text/html</span><br><span class="line">Referer: https://osgraph.com/</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 26</span><br><span class="line">indexName=github&amp;keyword=1</span><br></pre></td></tr></table></figure>
@@ -50,27 +28,25 @@
       </tags>
   </entry>
   <entry>
-    <title>网站美化</title>
-    <url>/2024/11/10/%E7%BD%91%E7%AB%99%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<p>添加了一个看板娘插件</p>
+    <title>基础任务</title>
+    <url>/2025/09/29/%E5%9F%BA%E7%A1%80%E4%BB%BB%E5%8A%A1/</url>
+    <content><![CDATA[<h2 id="计算机教育中缺失的学期"><a href="#计算机教育中缺失的学期" class="headerlink" title="计算机教育中缺失的学期"></a><strong>计算机教育中缺失的学期</strong></h2><p><img src="/./../images/PixPin_2025-09-29_23-43-13.png" alt="PixPin_2025-09-29_23-43-13"></p>
+<h2 id="访问chatGPT"><a href="#访问chatGPT" class="headerlink" title="访问chatGPT"></a>访问chatGPT</h2><p><img src="/./../images/PixPin_2025-09-29_23-06-34.png" alt="PixPin_2025-09-29_23-06-34"></p>
+<h2 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h2><p>搭建基于 github+hexo 的个人博客，在部署到github时，因网络而失败，后面通过切换代理解决。</p>
+<h2 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h2><h4 id="ubuntu22-04"><a href="#ubuntu22-04" class="headerlink" title="ubuntu22.04"></a>ubuntu22.04</h4><p><img src="/./../images/PixPin_2025-09-29_23-20-21.png" alt="PixPin_2025-09-29_23-20-21"></p>
+<h4 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h4><p><img src="/./../images/PixPin_2025-09-29_23-19-26.png" alt="PixPin_2025-09-29_23-19-26"></p>
+<h2 id="使用VScode"><a href="#使用VScode" class="headerlink" title="使用VScode"></a>使用VScode</h2><h4 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h4><p><img src="/./../images/PixPin_2025-09-29_23-29-55.png" alt="PixPin_2025-09-29_23-29-55"></p>
+<h4 id="SSH连接虚拟机"><a href="#SSH连接虚拟机" class="headerlink" title="SSH连接虚拟机"></a>SSH连接虚拟机</h4><p><img src="/./../images/PixPin_2025-09-29_23-32-11.png" alt="PixPin_2025-09-29_23-32-11"></p>
+<h4 id="主题插件"><a href="#主题插件" class="headerlink" title="主题插件"></a>主题插件<img src="/./../images/PixPin_2025-09-29_23-33-16.png" alt="PixPin_2025-09-29_23-33-16"></h4><h4 id="安装-libnum库-并运行代码"><a href="#安装-libnum库-并运行代码" class="headerlink" title="安装 libnum库,并运行代码"></a>安装 libnum库,并运行代码</h4><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p><img src="/./../images/PixPin_2025-09-29_23-39-27.png" alt="PixPin_2025-09-29_23-39-27"></p>
+<h5 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line">my_str = <span class="number">10400874617859432610723437735825230748786977</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(my_str))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./../images/PixPin_2025-09-29_23-39-44.png" alt="PixPin_2025-09-29_23-39-44"></p>
 ]]></content>
       <categories>
         <category>埋头苦干</category>
       </categories>
       <tags>
-        <tag>美化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第一篇博文</title>
-    <url>/2024/11/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
-    <content><![CDATA[<p>终于搭建好了，因为网络原因卡在了部署到github，总算好了。</p>
-]]></content>
-      <categories>
-        <category>胡说八道</category>
-      </categories>
-      <tags>
-        <tag>杂谈</tag>
+        <tag>杂</tag>
       </tags>
   </entry>
 </search>
