@@ -179,7 +179,24 @@
 <li><strong>并发增加机会</strong>：50个线程并发执行，增加在正确时间窗口内命中的概率</li>
 <li><strong>容错机制</strong>：网络延迟、服务器处理速度等因素可能导致单次请求失败</li>
 </ol>
-<h2 id="红包题第七弹"><a href="#红包题第七弹" class="headerlink" title="红包题第七弹"></a>红包题第七弹</h2>]]></content>
+<h2 id="红包题第七弹"><a href="#红包题第七弹" class="headerlink" title="红包题第七弹"></a>红包题第七弹</h2><p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120223503982.png" alt="image-20251120214432028"></p>
+<p>打开<code>/backdoor.php</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120223503983.png" alt="image-20251120214616786"></p>
+<p><code>git-dumper https://17624533-04d3-43fa-af1d-8b99f4d0b05e.challenge.ctf.show/.git ./output</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120223503984.png" alt="image-20251120220853221"></p>
+<p>用蚁剑连接</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120223503985.png" alt="image-20251120221235310"></p>
+<p>不能直接查看flag.txt</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120223503986.png" alt="image-20251120221335715"></p>
+<p>POST传参<code>Letmein=highlight_file(&quot;../flag.txt&quot;);</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120223503987.png" alt="image-20251120221905487"></p>
+<h2 id="萌新专属红包题"><a href="#萌新专属红包题" class="headerlink" title="萌新专属红包题"></a>萌新专属红包题</h2><p>弱口令</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120223503988.png" alt="image-20251120222955518"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120223503989.png" alt="image-20251120223027976"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120223503990.png" alt="image-20251120223450461"></p>
+<h2 id="CTFshow-web1"><a href="#CTFshow-web1" class="headerlink" title="CTFshow web1"></a>CTFshow web1</h2><p>注册登录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YU030X/blogpics@main/img/20251120225424837.png" alt="image-20251120225416475"></p>
+]]></content>
       <categories>
         <category>CTF</category>
       </categories>
