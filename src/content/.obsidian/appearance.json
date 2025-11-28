@@ -10,5 +10,6 @@
   "baseFontSizeAction": true,
   "interfaceFontFamily": "Noto Sans SC",
   "textFontFamily": "Noto Sans SC",
-  "monospaceFontFamily": "JetBrains Maple Mono"
+  "monospaceFontFamily": "JetBrains Maple Mono",
+  "baseFontSize": 15
 }
