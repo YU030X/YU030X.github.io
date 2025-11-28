@@ -6,7 +6,7 @@ categories: []
 repositoryUrl: https://github.com/YU030X
 demoURL: ""
 status: ""
-image: ""
+image: "[[../posts/attachments/律师6.jpg]]"
 imageAlt: ""
 hideCoverImage: false
 hideTOC: false
