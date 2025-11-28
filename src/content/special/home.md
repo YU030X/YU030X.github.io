@@ -2,6 +2,6 @@
 title: Homepage
 description: Welcome to the homepage
 ---
-## Thanks for Reading
+## 祝你成功
 
-If you're looking for more, check out the [posts](/posts) page.
+ [这里可以看更多](/posts) 

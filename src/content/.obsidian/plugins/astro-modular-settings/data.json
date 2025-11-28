@@ -1,5 +1,5 @@
 {
-  "runWizardOnStartup": true,
+  "runWizardOnStartup": false,
   "currentTemplate": "standard",
   "currentTheme": "oxygen",
   "customThemeFile": "custom",
@@ -12,11 +12,11 @@
     }
   },
   "siteInfo": {
-    "site": "https://astro-modular.netlify.app",
-    "title": "Astro Modular",
-    "description": "A flexible blog theme designed for Obsidian users.",
-    "author": "David V. Kimball",
-    "language": "en",
+    "site": "https://yu030x.github.io",
+    "title": "YU030X",
+    "description": "無限進步",
+    "author": "YU030X",
+    "language": "zh-CN",
     "faviconThemeAdaptive": true,
     "defaultOgImageAlt": "Astro Modular logo."
   },
@@ -58,18 +58,13 @@
       },
       {
         "title": "GitHub",
-        "url": "https://github.com/davidvkimball/astro-modular"
+        "url": "https://github.com/yu030x"
       }
     ],
     "social": [
       {
-        "title": "X",
-        "url": "https://x.com/davidvkimball",
-        "icon": "x-twitter"
-      },
-      {
         "title": "GitHub",
-        "url": "https://github.com/davidvkimball",
+        "url": "https://github.com/yu030x",
         "icon": "github"
       }
     ]
@@ -221,7 +216,7 @@
     }
   },
   "deployment": {
-    "platform": "netlify"
+    "platform": "github-pages"
   },
   "pluginConfig": {
     "obsidianSettings": {

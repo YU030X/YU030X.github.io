@@ -40,15 +40,9 @@ export default defineConfig({
   '/contact-me': '/contact',
   '/contact-us': '/contact',
   '/privacy': '/privacy-policy',
-  '/posts/mermaid-test': '/posts/obsidian-embeds-demo',
-  '/posts/mermaid-diagram-test': '/posts/obsidian-embeds-demo',
-  '/posts/mermaid-diagrams': '/posts/obsidian-embeds-demo',
-  '/posts/astro-suite-vault-modular-guide': '/posts/obsidian-vault-guide',
-  '/posts/astro-suite-obsidian-vault-guide-astro-modular': '/posts/obsidian-vault-guide',
-  '/projects/obsidian-astro-composer': '/projects/astro-composer',
+  '/projects/未命名': '/projects/ctf',
   '/docs/api-reference': '/docs/api',
-  '/docs/astro-modular-configuration': '/docs/configuration',
-  '/docs/sourcetree-and-git': '/docs/sourcetree-and-git-setup'
+  '/docs/astro-modular-configuration': '/docs/configuration'
 } : {},
 image: {
     service: {
