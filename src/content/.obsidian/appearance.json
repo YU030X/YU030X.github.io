@@ -6,10 +6,11 @@
     "astro-modular-styling"
   ],
   "theme": "system",
-  "accentColor": "",
+  "accentColor": "#369cd3",
   "baseFontSizeAction": true,
   "interfaceFontFamily": "Noto Sans SC",
   "textFontFamily": "Noto Sans SC",
   "monospaceFontFamily": "JetBrains Maple Mono",
-  "baseFontSize": 15
+  "baseFontSize": 15,
+  "nativeMenus": false
 }
