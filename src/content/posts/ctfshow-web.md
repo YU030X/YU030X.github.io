@@ -5,7 +5,7 @@ description: 做一些题目练练手
 tags:
   - ctfshow
   - ctf
-image: "[[attachments/律师2.jpg]]"
+image: "[[attachments/律师3.jpg]]"
 imageAlt: ""
 imageOG: false
 hideCoverImage: false
